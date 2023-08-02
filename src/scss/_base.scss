@@ -1,3 +1,11 @@
+// brand colour scheme and fonts
+$helvar-red: #b61e35;
+$helvar-dark-red: #8a1b1b;
+$helvar-faded-red: #e197a1;
+$helvar-white: #ffffff;
+$helvar-font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// reset styling etc
 * {
   margin: 0px;
   padding: 0px;
@@ -8,10 +16,47 @@
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
+  font-family: $helvar-font-family;
 }
 
+// set up background & prevent horizontal scroll
 body {
+  background: $helvar-red;
   overflow-x: hidden;
   width: 100vw;
   height: 100%;
 }
+
+input[type="range"] {
+  accent-color: $helvar-red;
+  width: 100%;
+}
+
+/*
+input[type="range"] {
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  color: $helvar-red;
+  background: $helvar-faded-red;
+  accent-color: $helvar-red;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: $helvar-red;
+  cursor: pointer;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  background: $helvar-red;
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  background: $helvar-dark-red;
+}
+*/
