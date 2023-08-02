@@ -26,7 +26,14 @@ export const LuminaireSlider = ({ title, value, onChange }) => {
         <p className="luminaireSlider__container--title">{title}</p>
         <p className="luminaireSlider__container--percentage">{value + "%"}</p>
       </div>
-      <div className="luminaireSlider__bottom">
+      <div
+        className="luminaireSlider__bottom"
+        style={{
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <input
           type="range"
           id={title}
