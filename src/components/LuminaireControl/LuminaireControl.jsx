@@ -2,29 +2,35 @@ import { useState } from "react";
 import { Button } from "../Button/Button";
 import { LuminaireSlider } from "./LuminaireSlider";
 
+const CONTROL_DEFAULTS = {
+  occupied: 80,
+  powerSave: 20,
+  minimum: 0,
+};
+
+const controlPanelStyle = {
+  display: "flex",
+  flexDirection: "column",
+  background: "#ffffff",
+  padding: "20px",
+  height: "auto",
+  width: "300px",
+  gap: "15px",
+};
+
+const buttonsContainerStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  width: "100%",
+};
+
 export const LuminaireControl = () => {
-  const controlPanelStyle = {
-    display: "flex",
-    flexDirection: "column",
-    background: "#ffffff",
-    padding: "20px",
-    height: "auto",
-    width: "300px",
-    gap: "15px",
-  };
-
-  const buttonsContainerStyle = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-  };
-
-  /*---------------------------------------------*/
-
-  const [occupiedValue, setOccupiedValue] = useState(85);
-  const [powerSaveValue, setPowerSaveValue] = useState(25);
-  const [minimumValue, setMinimumValue] = useState(5);
+  const [occupiedValue, setOccupiedValue] = useState(CONTROL_DEFAULTS.occupied);
+  const [powerSaveValue, setPowerSaveValue] = useState(
+    CONTROL_DEFAULTS.powerSave,
+  );
+  const [minimumValue, setMinimumValue] = useState(CONTROL_DEFAULTS.minimum);
 
   const handleOccupiedChange = (newValue) => {
     setOccupiedValue(newValue);
@@ -73,14 +79,10 @@ export const LuminaireControl = () => {
 
   /*---------------------------------------------*/
 
-  const defaultOccupiedValue = 85;
-  const defaultPowerSaveValue = 25;
-  const defaultMinimumValue = 5;
-
   const handleCancel = () => {
-    setOccupiedValue(defaultOccupiedValue);
-    setPowerSaveValue(defaultPowerSaveValue);
-    setMinimumValue(defaultMinimumValue);
+    setOccupiedValue(CONTROL_DEFAULTS.occupied);
+    setPowerSaveValue(CONTROL_DEFAULTS.powerSave);
+    setMinimumValue(CONTROL_DEFAULTS.minimum);
 
     console.log(
       "The user does not want to update the luminaire light levels, cancelling changes.",
