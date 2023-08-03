@@ -3,7 +3,8 @@ $helvar-dark-red: #8a1b1b;
 $helvar-faded-red: #e197a1;
 $helvar-white: #ffffff;
 $helvar-grey: #e8e8e8;
-$helvar-dark-grey: #424242;
+$helvar-darker-grey: #b4b4b4;
+$helvar-darkest-grey: #424242;
 $helvar-font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 /*---------------------------------------------*/
@@ -49,7 +50,7 @@ button {
   &:disabled,
   &[disabled] {
     background: $helvar-grey;
-    color: $helvar-dark-grey;
+    color: $helvar-darkest-grey;
   }
 
   &:hover:enabled {
@@ -59,5 +60,14 @@ button {
 
   &:focus {
     outline: none;
+  }
+
+  &.button-grey {
+    background: $helvar-grey;
+    color: $helvar-darkest-grey;
+
+    &:hover {
+      background: $helvar-darker-grey;
+    }
   }
 }

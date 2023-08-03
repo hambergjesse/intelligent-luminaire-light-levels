@@ -13,24 +13,81 @@ export const LuminaireControl = () => {
     gap: "15px",
   };
 
-  /*---------------------------------------------*/
-
-  const [sliderValue, setSliderValue] = useState(100);
-
-  const handleSliderChange = (newValue) => {
-    setSliderValue(newValue);
-  };
-
-  /*---------------------------------------------*/
-
-  const buttonSectionStyle = {
+  const buttonsContainerStyle = {
     display: "flex",
     justifyContent: "space-between",
-    width: "95%",
+    alignItems: "center",
+    width: "100%",
   };
 
-  const handleButtonClick = (text) => {
-    console.log(`${text} button clicked`);
+  /*---------------------------------------------*/
+
+  const [occupiedValue, setOccupiedValue] = useState(85);
+  const [powerSaveValue, setPowerSaveValue] = useState(25);
+  const [minimumValue, setMinimumValue] = useState(5);
+
+  const handleOccupiedChange = (newValue) => {
+    setOccupiedValue(newValue);
+    if (newValue < powerSaveValue) {
+      setPowerSaveValue(newValue);
+    }
+    if (newValue < minimumValue) {
+      setMinimumValue(newValue);
+    }
+  };
+
+  const handlePowerSaveChange = (newValue) => {
+    setPowerSaveValue(newValue);
+    if (newValue < minimumValue) {
+      setMinimumValue(newValue);
+    }
+    if (newValue > occupiedValue) {
+      setOccupiedValue(newValue);
+    }
+  };
+
+  const handleMinimumChange = (newValue) => {
+    setMinimumValue(newValue);
+    if (newValue > occupiedValue) {
+      setOccupiedValue(newValue);
+      setPowerSaveValue(newValue);
+    } else if (newValue > powerSaveValue) {
+      setPowerSaveValue(newValue);
+    }
+  };
+
+  /*---------------------------------------------*/
+
+  const handleApply = () => {
+    const levels = {
+      occupied: occupiedValue,
+      powerSave: powerSaveValue,
+      minimum: minimumValue,
+    };
+
+    console.log("Applying levels:", levels);
+    alert(
+      `Applying levels: occupied [${levels.occupied}], powerSave [${levels.powerSave}], minimum [${levels.minimum}]`,
+    );
+  };
+
+  /*---------------------------------------------*/
+
+  const defaultOccupiedValue = 85;
+  const defaultPowerSaveValue = 25;
+  const defaultMinimumValue = 5;
+
+  const handleCancel = () => {
+    setOccupiedValue(defaultOccupiedValue);
+    setPowerSaveValue(defaultPowerSaveValue);
+    setMinimumValue(defaultMinimumValue);
+
+    console.log(
+      "The user does not want to update the luminaire light levels, cancelling changes.",
+    );
+    alert(
+      "The user does not want to update the luminaire light levels, cancelling changes.",
+    );
   };
 
   return (
@@ -38,22 +95,22 @@ export const LuminaireControl = () => {
       <h1>Edit levels</h1>
       <LuminaireSlider
         title={"Occupied"}
-        value={sliderValue}
-        onChange={handleSliderChange}
+        value={occupiedValue}
+        onChange={handleOccupiedChange}
       />
       <LuminaireSlider
-        title={"Occupied"}
-        value={sliderValue}
-        onChange={handleSliderChange}
+        title={"Power Save"}
+        value={powerSaveValue}
+        onChange={handlePowerSaveChange}
       />
       <LuminaireSlider
-        title={"Occupied"}
-        value={sliderValue}
-        onChange={handleSliderChange}
+        title={"Minimum"}
+        value={minimumValue}
+        onChange={handleMinimumChange}
       />
-      <div style={buttonSectionStyle} className="controlPanel__buttons">
-        <Button text="Cancel" onClick={handleButtonClick} disabled={true} />
-        <Button text="Apply" onClick={handleButtonClick} disabled={false} />
+      <div style={buttonsContainerStyle} className="controlPanel__buttons">
+        <Button text="Cancel" onClick={handleCancel} className="button-grey" />
+        <Button text="Apply" onClick={handleApply} />
       </div>
     </section>
   );

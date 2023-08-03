@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
-export const Button = ({ text, disabled, onClick }) => {
+export const Button = ({ text, onClick, className }) => {
   const handleButtonClick = () => {
     onClick(text);
   };
 
   return (
-    <button onClick={handleButtonClick} disabled={disabled}>
+    <button onClick={handleButtonClick} className={className}>
       {text}
     </button>
   );
@@ -14,6 +14,6 @@ export const Button = ({ text, disabled, onClick }) => {
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  disabled: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
