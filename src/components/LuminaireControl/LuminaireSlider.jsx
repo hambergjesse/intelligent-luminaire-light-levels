@@ -1,20 +1,20 @@
 import PropTypes from "prop-types";
 
+const sliderStyle = {
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  gap: "15px",
+};
+
+const sliderStyleTop = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  width: "100%",
+};
+
 export const LuminaireSlider = ({ title, value, onChange }) => {
-  const sliderStyle = {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-    gap: "15px",
-  };
-
-  const sliderStyleTop = {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
-  };
-
   const handleSliderChange = (event) => {
     const newValue = parseInt(event.target.value, 10);
     onChange(newValue);
