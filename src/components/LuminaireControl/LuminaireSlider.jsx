@@ -16,6 +16,12 @@ const sliderStyleTop = {
   width: "100%",
 };
 
+// Styling for the percentage number/text
+const percentageStyle = {
+  color: "#b61e35",
+  fontWeight: "600",
+};
+
 // LuminaireSlider component to represent a slider with a title and range input
 export const LuminaireSlider = ({ title, value, onChange }) => {
   // Event handler for slider value changes
@@ -30,7 +36,12 @@ export const LuminaireSlider = ({ title, value, onChange }) => {
       {/* Top section with slider title and current value percentage */}
       <div className="luminaireSlider__top" style={sliderStyleTop}>
         <p className="luminaireSlider__container--title">{title}</p>
-        <p className="luminaireSlider__container--percentage">{value + "%"}</p>
+        <p
+          className="luminaireSlider__container--percentage"
+          style={percentageStyle}
+        >
+          {value + "%"}
+        </p>
       </div>
       {/* Bottom section with the range input */}
       <div
